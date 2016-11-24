@@ -1,0 +1,150 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "This is a sample for SpringMVC-Extend",
+    "version" : "v1",
+    "title" : "Swagger-Extend Maven Plugin Sample",
+    "contact" : {
+      "name" : "zhangyuanchen",
+      "url" : "https://github.com/junejan143",
+      "email" : "13338073698@163.com"
+    }
+  },
+  "host" : "127.0.0.1:8008",
+  "tags" : [ {
+    "name" : "RoleController",
+    "description" : "标签的描述"
+  }, {
+    "name" : "UserController",
+    "description" : "标签的描述"
+  }, {
+    "name" : "方法的标记"
+  } ],
+  "paths" : {
+    "/admin/role" : {
+      "post" : {
+        "tags" : [ "RoleController" ],
+        "summary" : "createRole",
+        "operationId" : "createRole",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "role",
+          "description" : "com.gemini.domain.Role",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/Role"
+          }
+        }, {
+          "name" : "pageNo",
+          "in" : "query",
+          "description" : "int",
+          "required" : false,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "pageSize",
+          "in" : "query",
+          "description" : "int",
+          "required" : false,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : ""
+          }
+        }
+      }
+    },
+    "/admin/role/{roleId}" : {
+      "get" : {
+        "tags" : [ "RoleController" ],
+        "summary" : "getRole",
+        "operationId" : "getRole",
+        "responses" : {
+          "204" : {
+            "description" : ""
+          }
+        }
+      }
+    },
+    "/user/create/{userId}" : {
+      "post" : {
+        "tags" : [ "UserController" ],
+        "summary" : "createUser",
+        "operationId" : "createUser",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "user",
+          "description" : "com.gemini.domain.User",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/User"
+          }
+        }, {
+          "name" : "userId",
+          "in" : "path",
+          "description" : "int",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : ""
+          }
+        }
+      }
+    },
+    "/user/{userId}" : {
+      "get" : {
+        "tags" : [ "UserController" ],
+        "summary" : "getUser",
+        "operationId" : "getUser",
+        "parameters" : [ {
+          "name" : "userId",
+          "in" : "path",
+          "description" : "int",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : ""
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Role" : {
+      "type" : "object",
+      "required" : [ "roleName" ],
+      "properties" : {
+        "roleName" : {
+          "type" : "string",
+          "description" : "名称"
+        }
+      }
+    },
+    "User" : {
+      "type" : "object",
+      "required" : [ "name" ],
+      "properties" : {
+        "name" : {
+          "type" : "string",
+          "description" : "名称"
+        },
+        "sex" : {
+          "type" : "string",
+          "description" : "性别",
+          "readOnly" : true
+        },
+        "address" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}
